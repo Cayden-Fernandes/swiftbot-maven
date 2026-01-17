@@ -1,4 +1,0 @@
-# Calibrate Your SwiftBot - Survey
-
-Approach 2- measure Time taken to travel a fixed distance. 
-
