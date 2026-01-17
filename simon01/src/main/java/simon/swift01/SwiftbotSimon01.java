@@ -27,29 +27,20 @@ public class SwiftbotSimon01 {
         while (true) {
 
             System.out.println(
-                    "Enter 1 to move the robot Forwards\n" +
-                            "Enter 2 to move the robot Backwards\n" +
-                            "Enter 3 to blink lights\n" +
-                            "Enter 4 to custom move like a remote control car\n" +
+                            "Enter 1 to custom move like a remote control car\n" +
+                            "Enter 2 to blink lights\n" +    
                             "Enter 0 to Exit\n");
 
             String input = reader.next();
 
             switch (input) {
+                
                 case "1":
-                    swiftBot.move(100, 100, 2000);
+                    remoteControlMode();
                     break;
 
                 case "2":
-                    swiftBot.move(-100, -100, 2000);
-                    break;
-
-                case "3":
                     blinkLights();
-                    break;
-
-                case "4":
-                    remoteControlMode();
                     break;
 
                 case "0":
@@ -65,9 +56,7 @@ public class SwiftbotSimon01 {
         }
     }
 
-    /**
-     * Blink the underlights
-     */
+    // Blink the underlights
     public static void blinkLights() throws InterruptedException {
         System.out.println("Blinking lights...\n");
         int[] red = {255, 0, 0};
@@ -76,7 +65,7 @@ public class SwiftbotSimon01 {
 
         for (int i = 0; i < 5; i++) {
             swiftBot.fillUnderlights(red);
-            Thread.sleep(200);
+            Thread.sleep(1000);
             swiftBot.fillUnderlights(green);
             Thread.sleep(200);
             swiftBot.fillUnderlights(blue);
@@ -86,11 +75,9 @@ public class SwiftbotSimon01 {
         System.out.println("Lights off.\n");
     }
 
-    /**
-     * Remote control car mode using keyboard
-     */
+    // Remote control car mode using keyboard
     public static void remoteControlMode() {
-        System.out.println("\n=== REMOTE CONTROL MODE ===");
+        System.out.println("\n********** REMOTE CONTROL MODE ************");
         System.out.println("Controls:");
         System.out.println("  W - Move Forward");
         System.out.println("  S - Move Backward");
@@ -100,7 +87,7 @@ public class SwiftbotSimon01 {
         System.out.println("  Q - Exit Remote Control Mode\n");
 
         try {
-            // Enable raw mode for character-by-character reading
+            // Enable raw mode for character by character reading
             setRawMode(true);
             running = true;
             currentKey = 'x'; // Start stopped
@@ -157,34 +144,33 @@ public class SwiftbotSimon01 {
         }
     }
 
-    /**
-     * Execute movement based on current key
-     */
+    
+    //Execute movement based on current key
     public static void executeMovement(char key) throws InterruptedException {
         switch (key) {
             case 'w': // Forward
-                System.out.print("▲ Moving Forward   \r");
+                System.out.print(" Moving Forward   \r");
                 swiftBot.move(SPEED, SPEED, 50);
                 break;
 
             case 's': // Backward
-                System.out.print("▼ Moving Backward  \r");
+                System.out.print(" Moving Backward  \r");
                 swiftBot.move(-SPEED, -SPEED, 50);
                 break;
 
             case 'a': // Turn Left
-                System.out.print("◄ Turning Left     \r");
+                System.out.print(" Turning Left     \r");
                 swiftBot.move(-TURN_SPEED, TURN_SPEED, 50);
                 break;
 
             case 'd': // Turn Right
-                System.out.print("► Turning Right    \r");
+                System.out.print(" Turning Right    \r");
                 swiftBot.move(TURN_SPEED, -TURN_SPEED, 50);
                 break;
 
             case 'x': // Stop
             case ' ': // Space also stops
-                System.out.print("■ Stopped          \r");
+                System.out.print(" Stopped          \r");
                 stopRobot();
                 break;
 
@@ -195,16 +181,13 @@ public class SwiftbotSimon01 {
         }
     }
 
-    /**
-     * Stop the robot
-     */
+    //Stop the robot
     public static void stopRobot() throws InterruptedException {
         swiftBot.move(0, 0, 100);
     }
 
-    /**
-     * Enable/disable raw terminal mode for immediate key reading
-     */
+    
+    //Enable/disable raw terminal mode for immediate key reading
     public static void setRawMode(boolean enable) throws IOException, InterruptedException {
         if (enable) {
             // Disable canonical mode and echo
