@@ -87,7 +87,7 @@ public class SwiftbotSimon01 {
         System.out.println("  Q - Exit Remote Control Mode\n");
 
         try {
-            // Enable raw mode for character-by-character reading
+            // Enable raw mode for character by character reading
             setRawMode(true);
             running = true;
             currentKey = 'x'; // Start stopped
