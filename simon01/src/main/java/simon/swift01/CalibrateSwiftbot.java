@@ -3,7 +3,7 @@ package simon.swift01;
 import swiftbot.SwiftBotAPI;
 import java.util.Scanner;
 
-public class SetDuration {
+public class CalibrateSwiftbot {
     
     static SwiftBotAPI swiftbot = SwiftBotAPI.INSTANCE;
     static boolean isMoving = false;

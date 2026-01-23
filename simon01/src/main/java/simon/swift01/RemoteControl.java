@@ -4,7 +4,7 @@ import swiftbot.*;
 import java.io.IOException;
 import java.util.Scanner;
 
-public class SwiftbotSimon01 {
+public class RemoteControl {
 
     static SwiftBotAPI swiftBot;
     static final int SPEED = 100;
