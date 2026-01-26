@@ -187,7 +187,7 @@ public class RemoteControl {
     }
 
     
-    //Enable/disable raw terminal mode for immediate key reading
+    //Enable or disable the raw terminal mode for immediate key reading
     public static void setRawMode(boolean enable) throws IOException, InterruptedException {
         if (enable) {
             // Disable canonical mode and echo
